@@ -1,0 +1,67 @@
+    <!--HEADER INCLUDED-->
+
+<header ng-include="'views/navbar.html'"></header>
+
+    <!--ABOUT APP-->
+
+<div class="container">
+    <p class="font-weight-bold">Manage your to do list</p>
+    <p class=" text-secondary">Click on checkbox or drag and drop to done</p>  
+</div>
+
+<div class="container mt-5 " ng-controller="MainCtrl">
+  <div class="row">
+
+    <!--TODO LIST-->
+
+    <div class=" col-md-6 col-sm-12    ">
+      <div class="mr-2  p-3 bg-light">
+       <h3 class="d-inline ">To-do list</h3><i class="material-icons float-right " ng-click="show = !show">add_circle_outline</i>
+         <hr/>
+    <!--ADD TODO-->
+      <form name="frm" ng-submit="addTodo()" ng-show="show">
+          <input class="form-control"  ng-keyup="$event.keyCode == 13 ?(newtodo.length>0)&&addTodo() : null" type="text" name="newtodo" ng-model="newtodo" required/>
+      </form>
+    <!--SHOW TODOS-->
+          <li ng-repeat="todo in todos" class="bg-white w-100  mt-2 p-2"> 
+                 <div  ><img ng-src="{{imageSrc}}" class="w-100 mb-1" height="150px" ng-show="imageSrc" /></div>
+            <div  data-drag="true" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{animate:true}" class="d-inline ">
+               <input class="ml-2" type="checkbox" ng-model="todo.done"/><span class="ml-3">{{todo.titel}}</span>
+             </div>
+    <!--EDIT TODO-->        
+           <div class="dropdown d-inline-block float-right">
+            <i class="material-icons dropdown-toggle"  id="dropdownMenuButton" data-toggle="dropdown">more_vert</i> 
+            <div class="d-inline-block">
+              <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+               <div class="image-upload dropdown-item">
+                <label for="file-input"> Image
+                  <i class="material-icons  ">filter</i>
+                </label> 
+           <input id="file-input" type="file" ng-file-select="onFileSelect($files)" ng-model="imageSrc">
+          
+          </div>
+            <div class="dropdown-item" ng-click="removeTodo(todo)">Delete <i class="material-icons"> delete</i>
+            </div>
+            </div>
+          </div>
+          </div>
+            </li>
+        </div>
+    </div>
+
+    <!--DONE LIST-->
+
+    <div class="col-md-6  col-sm-12   ">
+      <div class="ml-2  p-3 bg-light">
+        <h3 class="d-inline">Done</h3>  <i ng-click="deleteAll()" class="material-icons float-right " >delete_sweep</i>    
+            <hr/>
+    <!--SHOW DONE ITEMS-->       
+            <li ng-show="todo.done&&doneHide"   jqyoui-draggable="{onStop:'doneAction()'"data-drop="true"  ng-repeat="todo in todos" class="bg-white w-100  mt-2 p-2">
+                <div class="d-inline "><img class="ml-2" src="images/checkbox active.png" alt="checkbox">
+             <span class="ml-3">{{todo.titel}}</span>  
+              </div>
+            </li>        
+    </div>
+  </div>
+  </div>
+</div>

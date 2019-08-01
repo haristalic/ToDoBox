@@ -1,0 +1,28 @@
+    <!--HEADER WITH PICTURE-->
+ 
+  <div class="singInForm p-1" ng-controller="loginCtrl">
+    <div class="text-center mb-5">
+    <img src="images/logo.png">
+  </div>   
+        
+    <!--SING IN FORM-->
+
+  <form name="loginFrm">
+    <div class="form-group">
+      <input type="email" name="email" class="form-control"  ng-model="user.email" placeholder="Enter email" required>
+      <p class=" alert alert-danger mt-1 " ng-show="loginFrm.email.$invalid && loginFrm.email.$touched">Enter valid
+        e mail!</p>
+    </div>     
+    <div class="form-group">
+      <input  class="form-control" type="password"  name="password" ng-model="user.password" ng-minlength=6 ng-model="user.password" placeholder="Password" required>       
+      <p class="alert alert-danger mt-1" ng-show="loginFrm.password.$error.minlength && loginFrm.password.$touched">
+          Password with minimum 6 chartesr</p>
+    </div>
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label text-secondary" ng-model="remeber" >Remeber</label>
+      <span class="float-right text-secondary">Forget your password?</span>
+    </div>
+    <button type="submit"  ng-click="signIn()"  ng-disabled="loginFrm.$invalid" class="btn btn-primary btn-lg w-100">Sing in</button>
+  </form>
+</div>

@@ -1,0 +1,26 @@
+body{
+  font-family: Nunito Sans;
+}
+.singInForm {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 400px;
+  height: 300px;
+  margin: auto;
+  background-color: #f3f3f3;
+}
+.dropdown-toggle::after {
+  display:none;
+}
+li{
+  list-style: none;
+}
+.dropdown-item > i{ vertical-align: middle !important; }
+.image-upload>input {
+  display: none;
+}
+nav, i,button,a,li { cursor: pointer; }
