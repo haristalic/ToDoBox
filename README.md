@@ -1,6 +1,6 @@
 # ToDoBox
 
-![Project Image](images/todoboxapp.png)
+![Project Image](app/images/todoboxapp.png?raw=true "Title")
 
 > This is a simple todo app done step-by-step. 
 ---
